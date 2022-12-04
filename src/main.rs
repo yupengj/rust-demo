@@ -1,52 +1,46 @@
-use std::io;
-use std::cmp::Ordering;
-use rand::Rng;
+// use std::io;
+// use std::cmp::Ordering;
+// use rand::Rng;
+
+mod secret_number;
+
+#[derive(Debug)]
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+
+fn build_user(email: String, username: String) -> User {
+    User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    }
+}
 
 fn main() {
-    println!("猜数开始!");
+    // let email = String::from("someone@example.com");
+    // let username = String::from("someusername123");
+    // let user1 = build_user(email, username);
+    // println!("{:?}", user1);
+    // dbg!(&user1);
+    //
+    // let user2 = User {
+    //     email: String::from("another@example.com"),
+    //     ..user1
+    // };
+    // println!("{:?}", user2);
+    // dbg!(&user2);
 
-    let secret_number = rand::thread_rng().gen_range(1..101);
+    let sn = secret_number::SecretNumber {
+        min: 200,
+        max: 5003,
+        exist: 0,
+        show_result: false,
+    };
 
-    println!("要猜的数是: {}", secret_number);
-
-    println!("请输入一个数1-100之间的正数，输入0放弃继续猜数");
-    println!();
-
-    loop {
-        let mut guess = String::new();
-
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("{}是无效输入请继续输入", guess);
-                continue;
-            }
-        };
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("猜小了!"),
-            Ordering::Greater => println!("猜大了!"),
-            Ordering::Equal => {
-                println!("猜对了!");
-                break;
-            }
-        }
-
-        print!("您输入的数字是: {}. ", guess);
-        if guess == 0 {
-            println!("你放弃了");
-            break;
-        } else if guess == secret_number {
-            println!("猜对了");
-            break;
-        } else if guess > secret_number {
-            println!("猜大了");
-        } else if guess < secret_number {
-            println!("猜小了");
-        }
-    }
+    sn.start()
 }
