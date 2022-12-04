@@ -10,7 +10,7 @@ pub struct SecretNumber {
 }
 
 impl SecretNumber {
-    fn square(max: u32, show_result: bool) -> SecretNumber {
+    pub fn square(max: u32, show_result: bool) -> SecretNumber {
         SecretNumber {
             min: 1,
             max,
@@ -60,7 +60,7 @@ impl SecretNumber {
                 println!("您放弃了");
                 break;
             } else if guess == secret_number {
-                println!("恭喜您猜对了。您猜了 {} 次", count);
+                println!("恭喜您猜对了。您猜了 {} 次", count + 1);
                 break;
             } else if guess > secret_number {
                 println!("猜大了");

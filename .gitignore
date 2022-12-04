@@ -2,4 +2,5 @@
 /shelf/
 /workspace.xml
 /.idea/
-/rust-demo.iml
+/*.iml
+*/target/
