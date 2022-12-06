@@ -1,4 +1,5 @@
 mod user_model;
+mod user_controller;
+mod user_service;
 
-pub use user_model::build_user;
 pub use user_model::User;

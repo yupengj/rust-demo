@@ -1,16 +1,15 @@
-#[derive(Debug)]
-pub struct User {
-    active: bool,
-    username: String,
-    email: String,
-    sign_in_count: u64,
-}
+use poem_openapi::{
+    types::{Email, Password},
+    ApiResponse, Object, OpenApi, OpenApiService, Tags,
+};
 
-pub fn build_user(email: String, username: String) -> User {
-    User {
-        email,
-        username,
-        active: true,
-        sign_in_count: 1,
-    }
+#[derive(Debug, Object, Clone, Eq, PartialEq)]
+pub struct User {
+    #[oai(read_only)]
+    pub id: i64,
+    #[oai(validator(max_length = 64))]
+    pub name: String,
+    #[oai(validator(max_length = 32))]
+    pub password: Password,
+    pub email: Email,
 }
