@@ -8,15 +8,9 @@ use slab::Slab;
 use tokio::sync::Mutex;
 
 use crate::user::user_model;
-use user_model::User;
 use crate::user::user_service;
-use user_service::{
-    create_user,
-    update_user,
-    delete_user,
-    find_all,
-    find_by_id,
-};
+use user_model::User;
+use user_service::{create_user, delete_user, find_all, find_by_id, update_user};
 
 #[derive(Tags)]
 enum ApiTags {

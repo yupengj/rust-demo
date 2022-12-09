@@ -1,6 +1,6 @@
-use std::io;
-use std::cmp::Ordering;
 use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
 
 pub struct SecretNumber {
     pub min: u32,
@@ -27,7 +27,10 @@ impl SecretNumber {
             println!("要猜的数是: {}", secret_number);
         }
 
-        println!("请输入一个数{}-{}之间的整数，输入0放弃继续猜数", self.min, self.max);
+        println!(
+            "请输入一个数{}-{}之间的整数，输入0放弃继续猜数",
+            self.min, self.max
+        );
         println!();
 
         let mut count = 0;

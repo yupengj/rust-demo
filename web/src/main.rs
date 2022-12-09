@@ -35,5 +35,9 @@ async fn main() -> Result<(), std::io::Error> {
         .at(index::INDEX_GET_PATH_1, get(index::index_get))
         .at(index::INDEX_GET_PATH_2, get(index::index_get));
 
-    server.run(app).nest("/api", api_service).nest("/", ui).await
+    server
+        .run(app)
+        .nest("/api", api_service)
+        .nest("/", ui)
+        .await
 }

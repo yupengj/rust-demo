@@ -17,6 +17,5 @@ fn main() {
 
     v.drain(..1);
 
-
     dbg!(v);
 }

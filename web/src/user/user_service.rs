@@ -1,6 +1,6 @@
-use uuid::Uuid;
-use std::ptr::null;
 use crate::user::User;
+use std::ptr::null;
+use uuid::Uuid;
 
 const USER_LIST: Vec<User> = Vec::new();
 
