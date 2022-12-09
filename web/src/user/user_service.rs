@@ -10,19 +10,20 @@ pub fn find_all() -> Vec<User> {
 
 pub fn find_by_id(id: String) -> User {
     let option = USER_LIST.iter().find(|it| it.id == id);
-    return option[0];
+    User::new()
 }
 
 pub fn find_by_name(name: String) -> User {
     let option = USER_LIST.iter().find(|it| it.name == name);
-    return option[0];
+    User::new()
 }
 
-pub fn create_user(&mut user: User) -> User {
+pub fn create_user(mut user: User) -> User {
     let id = Uuid::new_v4();
-    user.id = id;
-    USER_LIST.push(user);
-    user.clone()
+    user.id = id.to_string();
+    // USER_LIST.push(new_user);
+    // new_user.clone()
+    user
 }
 
 pub fn update_user(user: User) -> User {

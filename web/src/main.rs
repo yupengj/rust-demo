@@ -21,9 +21,9 @@ async fn main() -> Result<(), std::io::Error> {
     }
     tracing_subscriber::fmt::init();
 
-    let api_service =
-        OpenApiService::new(Api::default(), "Users", "1.0").server("http://localhost:3000/api");
-    let ui = api_service.swagger_ui();
+    // let api_service =
+    //     OpenApiService::new(Api::default(), "Users", "1.0").server("http://localhost:3000/api");
+    // let ui = api_service.swagger_ui();
 
     let listener = TcpListener::bind("127.0.0.1:3000");
     let server = Server::new(listener);
@@ -35,9 +35,6 @@ async fn main() -> Result<(), std::io::Error> {
         .at(index::INDEX_GET_PATH_1, get(index::index_get))
         .at(index::INDEX_GET_PATH_2, get(index::index_get));
 
-    server
-        .run(app)
-        .nest("/api", api_service)
-        .nest("/", ui)
-        .await
+    // server.run(app).nest("/api", api_service).nest("/", ui).await
+    server.run(app).await
 }
