@@ -1,5 +1,6 @@
-use poem_openapi::{Object};
+use poem_openapi::{Object, ApiResponse};
 
+// #[derive(Debug, Object, Clone, Eq, PartialEq)]
 #[derive(Debug, Object, Clone, Eq, PartialEq)]
 pub struct User {
     #[oai(read_only)]
