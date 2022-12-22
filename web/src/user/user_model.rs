@@ -3,12 +3,13 @@ use poem_openapi::{Object, ApiResponse};
 // #[derive(Debug, Object, Clone, Eq, PartialEq)]
 #[derive(Debug, Object, Clone, Eq, PartialEq)]
 pub struct User {
-    #[oai(read_only)]
+    #[oai]
     pub id: String,
     #[oai(validator(max_length = 64))]
     pub name: String,
     #[oai(validator(max_length = 32))]
     pub password: String,
+    #[oai(validator(max_length = 64))]
     pub email: String,
 }
 
@@ -21,12 +22,12 @@ impl User {
             email: String::from("123"),
         }
     }
-    // pub fn new(id: String, name: String, password: Password, email: Email) -> User {
-    //     User {
-    //         id,
-    //         name,
-    //         password,
-    //         email,
-    //     }
-    // }
+    pub fn none() -> User {
+        User {
+            id: String::from("不存在用户"),
+            name: String::from("不存在用户"),
+            password: String::from("不存在用户"),
+            email: String::from("不存在用户"),
+        }
+    }
 }
